@@ -1,0 +1,34 @@
+const { DataTypes } = require("sequelize");
+
+const db = require("../db/conn");
+
+const Pet = require("./Pet");
+
+const Tutor = db.define("Tutor", {
+  name: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+  phone: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+  email: {
+    type: DataTypes.STRING,
+    allowNull: false,
+    unique: true,
+  },
+  date_of_birth: {
+    type: DataTypes.DATE,
+    allowNull: false,
+  },
+  zip_code: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+});
+
+User.hasMany(Pet);
+Pet.belongsTo(Tutor);
+
+module.exports = Tutor;
