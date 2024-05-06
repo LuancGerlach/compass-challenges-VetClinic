@@ -1,0 +1,24 @@
+{
+  "name": "vetclinic",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LuancGerlach/compass-challenges-VetClinic.git"
+  },
+  "author": "Luan Gerlach",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LuancGerlach/compass-challenges-VetClinic/issues"
+  },
+  "homepage": "https://github.com/LuancGerlach/compass-challenges-VetClinic#readme",
+  "dependencies": {
+    "express": "^4.19.2",
+    "sequelizer": "^1.1.4",
+    "sqlite": "^5.1.1"
+  }
+}
