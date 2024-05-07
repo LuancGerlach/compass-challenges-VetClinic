@@ -16,5 +16,4 @@ sequelize
     console.error("Erro ao conectar:", error);
   });
 
-// Exportando a instância do Sequelize para ser utilizada em outros arquivos
 module.exports = sequelize;

@@ -31,6 +31,5 @@ const Tutor = conn.define("Tutor", {
 });
 
 Tutor.hasMany(Pet);
-Pet.belongsTo(Tutor);
 
 module.exports = Tutor;
