@@ -4,7 +4,7 @@ const Pet = require("../models/pets");
 
 // rota de teste
 router.get("/test", (req, res) => {
-  res.send("get funcionando");
+  res.send("Rota pets funcionando");
 });
 
 module.exports = router;

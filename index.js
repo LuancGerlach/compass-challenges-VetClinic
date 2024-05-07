@@ -1,17 +1,27 @@
 const express = require("express");
 const app = express();
-const db = require("./db/connection");
+const conn = require("./db/conn");
 const Sequelize = require("sequelize");
+const Pet = require("./models/pets");
+const Tutor = require("./models/tutors");
 const PORT = 8080;
 
-app.listen(PORT, function () {
-  console.log(`O Express está rodando na porta ${PORT}`);
+// rota home
+app.get("/", function (req, res) {
+  res.send("Home");
 });
 
-db.authenticate()
+// tutors routes
+app.use("/tutors", require("./routes/tutors"));
+
+// tutors routes
+app.use("/pets", require("./routes/pets"));
+
+conn
+  .sync()
   .then(() => {
-    console.log("Conectou ao banco com sucesso");
+    app.listen(PORT, function () {
+      console.log(`O Express está rodando na porta ${PORT}`);
+    });
   })
-  .catch((err) => {
-    console.log("Ocorreu um erro ao conectar", err);
-  });
+  .catch((err) => console.log(err));
