@@ -1,8 +1,13 @@
 const { DataTypes } = require("sequelize");
-const conn = require("../db/conn");
-const Pet = require("./pets");
+const conn = require("../db/conn.js");
+const Pet = require("./Pet");
 
 const Tutor = conn.define("Tutor", {
+  id: {
+    type: DataTypes.INTEGER,
+    primaryKey: true,
+    autoIncrement: true,
+  },
   name: {
     type: DataTypes.STRING,
     allowNull: false,
@@ -14,7 +19,6 @@ const Tutor = conn.define("Tutor", {
   email: {
     type: DataTypes.STRING,
     allowNull: false,
-    unique: true,
   },
   date_of_birth: {
     type: DataTypes.DATE,

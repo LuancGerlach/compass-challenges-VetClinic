@@ -18,6 +18,7 @@
   "homepage": "https://github.com/LuancGerlach/compass-challenges-VetClinic#readme",
   "dependencies": {
     "express": "^4.19.2",
+    "sequelize": "^6.37.3",
     "sequelizer": "^1.1.4",
     "sqlite": "^5.1.1",
     "sqlite3": "^5.1.7"

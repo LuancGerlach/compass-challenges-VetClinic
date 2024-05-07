@@ -1,7 +1,13 @@
 const { DataTypes } = require("sequelize");
-const conn = require("../db/conn");
+const conn = require("../db/conn.js");
+const Tutor = require("./Tutor.js");
 
 const Pet = conn.define("Pet", {
+  id: {
+    type: DataTypes.INTEGER,
+    primaryKey: true,
+    autoIncrement: true,
+  },
   name: {
     type: DataTypes.STRING,
     allowNull: false,
@@ -23,5 +29,9 @@ const Pet = conn.define("Pet", {
     allowNull: false,
   },
 });
+
+Pet.associate = function (models) {
+  Pet.belongsTo(models.Tutor);
+};
 
 module.exports = Pet;
