@@ -1,10 +1,8 @@
 const express = require("express");
 const app = express();
 const conn = require("./db/conn");
-const Sequelize = require("sequelize");
-const Pet = require("./models/pets");
-const Tutor = require("./models/tutors");
 const PORT = 8080;
+app.use(express.json());
 
 // rota home
 app.get("/", function (req, res) {
@@ -18,7 +16,7 @@ app.use("/tutors", require("./routes/tutors"));
 app.use("/pets", require("./routes/pets"));
 
 conn
-  .sync()
+  .sync({ force: true })
   .then(() => {
     app.listen(PORT, function () {
       console.log(`O Express está rodando na porta ${PORT}`);
