@@ -1,10 +1,8 @@
 const { DataTypes } = require("sequelize");
+const conn = require("../db/conn");
+const Pet = require("./pets");
 
-const db = require("../db/conn");
-
-const Pet = require("./Pet");
-
-const Tutor = db.define("Tutor", {
+const Tutor = conn.define("Tutor", {
   name: {
     type: DataTypes.STRING,
     allowNull: false,
@@ -28,7 +26,7 @@ const Tutor = db.define("Tutor", {
   },
 });
 
-User.hasMany(Pet);
+Tutor.hasMany(Pet);
 Pet.belongsTo(Tutor);
 
 module.exports = Tutor;

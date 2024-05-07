@@ -1,7 +1,7 @@
 const { DataTypes } = require("sequelize");
-const db = require("../db/conn");
+const conn = require("../db/conn");
 
-const Pet = db.define("Pet", {
+const Pet = conn.define("Pet", {
   name: {
     type: DataTypes.STRING,
     allowNull: false,
