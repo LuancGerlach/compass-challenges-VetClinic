@@ -16,7 +16,7 @@ app.use("/tutors", require("./routes/tutors"));
 app.use("/pets", require("./routes/pets"));
 
 conn
-  .sync({ force: true })
+  .sync()
   .then(() => {
     app.listen(PORT, function () {
       console.log(`O Express está rodando na porta ${PORT}`);
