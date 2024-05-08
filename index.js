@@ -4,11 +4,6 @@ const conn = require("./db/conn");
 const PORT = 8080;
 app.use(express.json());
 
-// rota home
-app.get("/", function (req, res) {
-  res.send("Home");
-});
-
 // tutors routes
 app.use("/tutors", require("./routes/tutors"));
 
