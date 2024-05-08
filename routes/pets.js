@@ -14,7 +14,6 @@ router.post("/:tutorId", async (req, res) => {
       return res.status(404).json({ error: "Tutor not found" });
     }
 
-    // Adicione o tutorId ao objeto de dados do pet
     petData.TutorId = tutorId;
 
     const newPet = await Pet.create(petData);

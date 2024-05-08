@@ -77,4 +77,32 @@ router.get("/:tutorId", async (req, res) => {
   }
 });
 
+// PUT para atualizar um tutor pelo id
+router.put("/:tutorId", async (req, res) => {
+  const tutorId = req.params.tutorId;
+
+  try {
+    const tutorToUpdate = await Tutor.findByPk(tutorId);
+
+    if (!tutorToUpdate) {
+      return res.status(404).json({ error: "Tutor not found" });
+    }
+
+    const { name, phone, email, date_of_birth, zip_code } = req.body;
+
+    if (name) tutorToUpdate.name = name;
+    if (phone) tutorToUpdate.phone = phone;
+    if (email) tutorToUpdate.email = email;
+    if (date_of_birth) tutorToUpdate.date_of_birth = date_of_birth;
+    if (zip_code) tutorToUpdate.zip_code = zip_code;
+
+    await tutorToUpdate.save();
+
+    res.status(200).json(tutorToUpdate);
+  } catch (error) {
+    console.error("Error updating tutor:", error);
+    res.status(500).json({ error: "Error updating tutor" });
+  }
+});
+
 module.exports = router;
