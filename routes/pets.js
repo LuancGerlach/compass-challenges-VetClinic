@@ -78,4 +78,24 @@ router.put("/:petId", async (req, res) => {
   }
 });
 
+// DELETE para excluir um pet pelo id
+router.delete("/:petId", async (req, res) => {
+  const petId = req.params.petId;
+
+  try {
+    const petToDelete = await Pet.findByPk(petId);
+
+    if (!petToDelete) {
+      return res.status(404).json({ error: "Pet not found" });
+    }
+
+    await petToDelete.destroy();
+
+    res.status(200).json({ message: "Pet deleted successfully" });
+  } catch (error) {
+    console.error("Error deleting pet:", error);
+    res.status(500).json({ error: "Error deleting pet" });
+  }
+});
+
 module.exports = router;
