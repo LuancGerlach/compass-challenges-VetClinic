@@ -105,4 +105,24 @@ router.put("/:tutorId", async (req, res) => {
   }
 });
 
+// DELETE para excluir um tutor pelo id
+router.delete("/:tutorId", async (req, res) => {
+  const tutorId = req.params.tutorId;
+
+  try {
+    const tutorToDelete = await Tutor.findByPk(tutorId);
+
+    if (!tutorToDelete) {
+      return res.status(404).json({ error: "Tutor not found" });
+    }
+
+    await tutorToDelete.destroy();
+
+    res.status(200).json({ message: "Tutor deleted successfully" });
+  } catch (error) {
+    console.error("Error deleting tutor:", error);
+    res.status(500).json({ error: "Error deleting tutor" });
+  }
+});
+
 module.exports = router;
