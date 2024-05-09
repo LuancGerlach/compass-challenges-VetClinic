@@ -11,7 +11,7 @@ app.use("/tutors", require("./routes/tutors"));
 app.use("/pets", require("./routes/pets"));
 
 conn
-  .sync()
+  .sync({ force: true })
   .then(() => {
     app.listen(PORT, () => {
       console.log(`Servidor rodando na porta ${PORT}`);

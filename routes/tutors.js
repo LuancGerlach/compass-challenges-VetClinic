@@ -3,7 +3,6 @@ const router = express.Router();
 const Tutor = require("../models/Tutor");
 const Pet = require("../models/Pet");
 
-// Post para adicionar um novo tutor
 router.post("/add", async (req, res) => {
   try {
     const { name, phone, email, date_of_birth, zip_code } = req.body;
@@ -23,31 +22,23 @@ router.post("/add", async (req, res) => {
   }
 });
 
-// Rota GET para listar todos os tutores e seus pets associados
 router.get("/", async (req, res) => {
   try {
     const tutors = await Tutor.findAll({
       include: Pet,
     });
 
-    const formattedResponse = tutors.map((tutor) => ({
-      id: tutor.id,
-      name: tutor.name,
-      phone: tutor.phone,
-      email: tutor.email,
-      date_of_birth: tutor.date_of_birth,
-      zip_code: tutor.zip_code,
-      pets: tutor.Pets,
-    }));
+    if (!tutors || tutors.length === 0) {
+      return res.status(404).json({ error: "No tutors found" });
+    }
 
-    res.status(200).json(formattedResponse);
+    res.status(200).json(tutors);
   } catch (error) {
     console.error("Error fetching tutors:", error);
     res.status(500).json({ error: "Error fetching tutors" });
   }
 });
 
-// get para buscar o tutor pelo id
 router.get("/:tutorId", async (req, res) => {
   const tutorId = req.params.tutorId;
 
@@ -60,24 +51,13 @@ router.get("/:tutorId", async (req, res) => {
       return res.status(404).json({ error: "Tutor not found" });
     }
 
-    const formattedResponse = {
-      id: tutor.id,
-      name: tutor.name,
-      phone: tutor.phone,
-      email: tutor.email,
-      date_of_birth: tutor.date_of_birth,
-      zip_code: tutor.zip_code,
-      pets: tutor.Pets,
-    };
-
-    res.status(200).json(formattedResponse);
+    res.status(200).json(tutor);
   } catch (error) {
     console.error("Error fetching tutor:", error);
     res.status(500).json({ error: "Error fetching tutor" });
   }
 });
 
-// PUT para atualizar um tutor pelo id
 router.put("/:tutorId", async (req, res) => {
   const tutorId = req.params.tutorId;
 
@@ -97,7 +77,6 @@ router.put("/:tutorId", async (req, res) => {
   }
 });
 
-// DELETE para excluir um tutor pelo id
 router.delete("/:tutorId", async (req, res) => {
   const tutorId = req.params.tutorId;
 
