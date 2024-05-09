@@ -1,12 +1,13 @@
 const { Sequelize } = require("sequelize");
+require("dotenv").config();
+const DB_DIALECT = process.env.DB_DIALECT;
+const DB_STORAGE = process.env.DB_STORAGE;
 
-// Criando uma instância do Sequelize
 const sequelize = new Sequelize({
-  dialect: "sqlite",
-  storage: "./db/app.db",
+  dialect: DB_DIALECT,
+  storage: DB_STORAGE,
 });
 
-// Testando a conexão com o banco de dados
 sequelize
   .authenticate()
   .then(() => {
