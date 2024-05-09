@@ -3,7 +3,6 @@ const router = express.Router();
 const Pet = require("../models/Pet.js");
 const Tutor = require("../models/Tutor.js");
 
-// Post pet passando o id do tutor vinculado
 router.post("/:tutorId", async (req, res) => {
   const tutorId = req.params.tutorId;
   const petData = req.body;
@@ -25,7 +24,6 @@ router.post("/:tutorId", async (req, res) => {
   }
 });
 
-//get para trazer todos pets
 router.get("/", async (req, res) => {
   try {
     const pets = await Pet.findAll();
@@ -41,7 +39,6 @@ router.get("/", async (req, res) => {
   }
 });
 
-// get para trazer pets pelo id
 router.get("/:petId", async (req, res) => {
   const petId = req.params.petId;
 
@@ -59,7 +56,6 @@ router.get("/:petId", async (req, res) => {
   }
 });
 
-// PUT para atualizar um pet pelo id
 router.put("/:petId", async (req, res) => {
   const petId = req.params.petId;
   try {
@@ -78,7 +74,6 @@ router.put("/:petId", async (req, res) => {
   }
 });
 
-// DELETE para excluir um pet pelo id
 router.delete("/:petId", async (req, res) => {
   const petId = req.params.petId;
 
