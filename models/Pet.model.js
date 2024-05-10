@@ -1,6 +1,6 @@
 const { DataTypes } = require("sequelize");
 const conn = require("../db/conn.js");
-const Tutor = require("./Tutor.js");
+const Tutor = require("./Tutor.model.js");
 
 const Pet = conn.define("Pet", {
   id: {
