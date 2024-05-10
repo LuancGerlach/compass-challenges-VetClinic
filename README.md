@@ -3,7 +3,8 @@
 ## Instruções
 
 Bem-vindo ao README do projeto VetClinic! Aqui você encontrará orientações sobre
-como executar o projeto e lidar com o arquivo .env.
+como executar o projeto e lidar com o arquivo .env e caso quiser entender melhor
+as rotas, pode dar uma olhada na pasta swagger.
 
 ### Executando o Projeto
 
